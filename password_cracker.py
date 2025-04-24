@@ -1,7 +1,7 @@
 import hashlib
 
 def crack_sha1_hash(hash, use_salts = False):
-    returnFunction = ''
+    # returnFunction = ''
     # if use_salts:
     #     with open('top-10000-passwords.txt') as fp:
     #         for entry in fp:
@@ -16,21 +16,18 @@ def crack_sha1_hash(hash, use_salts = False):
     #                        salt.close()
     #                        return returnFunction.replace('\n', '')
     # else:
-    with open('top-10000-passwords.txt') as fp:
-            for entry in fp:
-                ent = f'{entry.rstrip()}'
-                result = sign(ent.encode('utf-8'))
-                if result == hash:
-                    returnFunction = entry
-                    fp.close()
-                    return returnFunction.replace('\n', '')
-    return "PASSWORD NOT IN DATABASE"
+    #     with open('top-10000-passwords.txt') as fp:
+    #         for entry in fp:
+    #             ent = f'{entry.rstrip()}'
+    #             result = sign(ent.encode('utf-8'))
+    #             if result == hash:
+    #                 returnFunction = entry
+    #                 fp.close()
+    #                 return returnFunction.replace('\n', '')
+    # return "PASSWORD NOT IN DATABASE"
+    pass
 
 def sign(passWord):
     hash_object = hashlib.sha1(passWord)
     pbHash = hash_object.hexdigest()
-    # length = len(pbHash.decode("hex"))
-    # h = hashlib.sha1()
-    # h.update(passWord)
-    # h.digest()
     return pbHash
