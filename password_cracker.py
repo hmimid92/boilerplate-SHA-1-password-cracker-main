@@ -8,9 +8,11 @@ def crack_sha1_hash(hash, use_salts = False):
                 ent = f'{entry.rstrip()}'
                 with open('known-salts.txt') as salt:
                     for salti in salt:
-                        entNew = f'{salti.rstrip()}' + ent + f'{salti.rstrip()}'
-                        resultSalt = sign(entNew.encode('utf-8'))
-                        if resultSalt == hash:
+                        entNewLeft = f'{salti.rstrip()}' + ent
+                        entNewRight = ent + f'{salti.rstrip()}'
+                        resultSaltLeft = sign(entNewLeft.encode('utf-8'))
+                        resultSaltRight = sign(entNewRight.encode('utf-8'))
+                        if resultSaltLeft == hash or resultSaltRight == hash:
                            returnFunction = entry
                            fp.close()
                            salt.close()
